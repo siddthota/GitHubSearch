@@ -7,12 +7,12 @@
         <div class="table">
             <div class="table-cell">
                 <img class="rs" ng-src="{{contributor.avatar_url}}"/>
-                 <div><b>Name</b>: {{contributor.login}}</div>
-                 <div><b>Contributions:</b> {{contributor.contributions}}</div>
+                <br />
+                 <div class="ctri"><b>Name</b>: <a href="{{contributor.html_url}}" target="_blank">{{contributor.login}}</a></div>
+                 <div class="ctri"><b>Contributions:</b> {{contributor.contributions}}</div>
                 </div>
         </div>
     </div>
 </div>
 </div>
 </div>
-<a href="#/user/{{repo.owner.login}}">Back to Previous Page</a>
