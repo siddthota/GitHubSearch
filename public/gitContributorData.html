@@ -1,0 +1,18 @@
+<div>
+    <a href="#/user/{{repo.owner.login}}">Back to Previous Page</a>
+<h2>Repo Name: {{repo.name}}</h2>
+<div ng-repeat ="contributor in repo.contributors">
+<div class="square">
+    <div class="content">
+        <div class="table">
+            <div class="table-cell">
+                <img class="rs" ng-src="{{contributor.avatar_url}}"/>
+                 <div><b>Name</b>: {{contributor.login}}</div>
+                 <div><b>Contributions:</b> {{contributor.contributions}}</div>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<a href="#/user/{{repo.owner.login}}">Back to Previous Page</a>
