@@ -6,12 +6,13 @@
 
     function UserCtrl($scope, gitHubDataService, $routeParams) {
 
-        var onRepos = function (data) {
-            $scope.repos = data;
+        var onRepos = function (userData) {
+            $scope.repos = userData;
         };
 
         var onUserComplete = function (data) {
             $scope.user = data;
+            $scope.followers = data.followers;
             gitHubDataService.getRepos($scope.user)
                 .then(onRepos, onError);
         };

@@ -7,10 +7,17 @@
     function gitHubDataService($http) {
 
         var getUser = function(gituser) {
-            return $http.get('https://api.github.com/users/' + gituser)
+            var userData;
+            var userUrl = "https://api.github.com/users/" + gituser;
+            return $http.get(userUrl)
                 .then(function(response) {
-                    return response.data;
-                });
+                    userData = response.data;
+                    return $http.get(userUrl + "/followers");
+                })
+                .then(function(response) {
+                    userData.followers = response.data;
+                    return userData;
+                })
         };
 
         var getRepos = function(user) {
@@ -26,7 +33,8 @@
             return $http.get(repoUrl)
                 .then(function(response) {
                     repo = response.data;
-                    return $http.get(repoUrl + "/contributors")
+                    var repoContri = repoUrl + "/contributors";
+                    return $http.get(repoContri)
                         })
                 .then(function(response){
                     repo.contributors = response.data;

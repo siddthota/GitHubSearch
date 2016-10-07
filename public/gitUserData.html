@@ -3,9 +3,10 @@
         <div><a href="#/index">Back to Search</a></div>
         <div class=" alert alert-danger" ng-show="error"> {{error }} </div>
         <div class="col-sm-6">
-            <h2>Name: {{user.name}} </h2>
-            <h2>Email: {{user.email}} </h2>
-            <h2>Blog: {{user.blog}} </h2>
+            <h3>Name: {{user.name}} </h3>
+            <h3>Email: {{user.email}} </h3>
+            <h3>Blog: {{user.blog}} </h3>
+            <h3>Followers: {{followers.length}}</h3>
         </div>
         <div class="col-sm-6">
             <img ng-src="{{user.avatar_url}}" title="{{user.name}}" class="img-rounded" width="200" height="200" />
