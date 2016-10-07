@@ -19,3 +19,10 @@ Once done, you can start the node server *>node server.js.
 
 The application starts running on localhost:1345
 
+<b>Future Goals</b>
+<div>#1. Going to Build Tabbed Grids, that displays various data Objects in the Search Page. Each tab makes different service call and displays data in tabular grid.</div>
+<div>#2. More Robust Error Handling.</div>
+<div>#3. Pagination, if the user has more than 15 records.</div>
+<div>#4. Modals. </div>
+<div>#5. Improving the File Structure. </div>
+
