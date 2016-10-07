@@ -11,8 +11,8 @@
 .square {
     float: left;
     position: relative;
-    width: 23%;
-    padding-bottom: 28%;
+    width: 20%;
+    padding-bottom: 26%;
     margin: 1.66%;
     background-color: #e3e3e3;
     overflow: hidden;
