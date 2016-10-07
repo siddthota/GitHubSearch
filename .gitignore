@@ -1,0 +1,6 @@
+
+/node_modules
+#develop
+## Templates provided by https://github.com/github/gitignore
+node_modules/
+.idea/
