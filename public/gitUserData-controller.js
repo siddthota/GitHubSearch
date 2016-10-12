@@ -13,7 +13,6 @@
         };
 
         var onSubs = function(userData) {
-            gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
             $scope.subs = userData;
         };
 

@@ -23,9 +23,9 @@
     </select>
 
     <ul class="nav nav-tabs" role="tablist">
-        <li role="details" ng-click="onUserComplete(); activeTab = 'on-Repos'" ng-class="{'active': activeTab=='on-Repos'}">
+        <li role="details" ng-click="onUserComplete(); $scope.activeTab = 'on-Repos'" ng-class="{'active': $scope.activeTab=='on-Repos'}">
             <a href="" role="tab" data-toggle="tab">Repositories</a></li>
-        <li role="details" ng-click="onSubs(); activeTab = 'on-Subs'" ng-class="{'active': activeTab=='on-Subs'}">
+        <li role="details" ng-click="onUserComplete(); $scope.activeTab = 'on-Subs'" ng-class="{'active': $scope.activeTab=='on-Subs'}">
             <a href="" role="tab" data-toggle="tab">Subscriptions</a></li>
     </ul>
 
