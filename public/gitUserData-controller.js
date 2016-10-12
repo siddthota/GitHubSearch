@@ -6,15 +6,33 @@
 
     function UserCtrl($scope, gitHubDataService, $routeParams) {
 
+        $scope.activeTab = 'on-Repos';
+
         var onRepos = function (userData) {
             $scope.repos = userData;
         };
 
-        var onUserComplete = function (data) {
+        var onSubs = function(userData) {
+            gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
+            $scope.subs = userData;
+        };
+
+        var onUserComplete = function(data) {
             $scope.user = data;
             $scope.followers = data.followers;
-            gitHubDataService.getRepos($scope.user)
-                .then(onRepos, onError);
+           /* gitHubDataService.getRepos($scope.user)
+                .then(onRepos, onError);*/
+            function tabInfo() {
+                if($scope.activeTab === 'on-Repos') {
+                    gitHubDataService.getRepos($scope.user)
+                        .then(onRepos, onError);
+                }
+                else if($scope.activeTab === 'on-Subs') {
+                    gitHubDataService.getSubs($scope.user)
+                        .then(onSubs, onError);
+                }
+            }
+            tabInfo();
         };
 
         var onError = function (reason) {
@@ -24,6 +42,7 @@
         $scope.gituser = $routeParams.gituser;
         $scope.sortOrder = '-stargazers_count';
         gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
+
 
     }
 

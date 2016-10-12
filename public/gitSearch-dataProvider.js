@@ -27,6 +27,13 @@
                 });
         };
 
+        var getSubs = function(user) {
+            return $http.get(user.subscriptions_url)
+                .then(function(response) {
+                    return response.data
+                })
+        };
+
         var getCbtrs = function(gituser, gitrepo) {
             var repo;
             var repoUrl = "http://api.github.com/repos/" + gituser + "/" + gitrepo;
@@ -46,7 +53,8 @@
         return{
         getUser: getUser,
         getRepos: getRepos,
-        getCbtrs: getCbtrs
+        getCbtrs: getCbtrs,
+        getSubs: getSubs
       }
     }
 

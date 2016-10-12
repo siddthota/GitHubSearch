@@ -22,6 +22,13 @@
         <option value="-open_issues_count">Open Issues</option>
     </select>
 
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="details" ng-click="onUserComplete(); activeTab = 'on-Repos'" ng-class="{'active': activeTab=='on-Repos'}">
+            <a href="" role="tab" data-toggle="tab">Repositories</a></li>
+        <li role="details" ng-click="onSubs(); activeTab = 'on-Subs'" ng-class="{'active': activeTab=='on-Subs'}">
+            <a href="" role="tab" data-toggle="tab">Subscriptions</a></li>
+    </ul>
+
     <table class="table" >
         <thead>
         <tr>
