@@ -3,11 +3,11 @@
 <b>Technologies Used:</b>
 
 <ul>
-<li>Front-End - Angular JS 1.2.x (2-way Data Binding, Promises, Services($location, $inteval,custom and etc.), Routing (ng-view)).</li> 
-<li>Styling - Bootstrap 3.3.x. </li>
+<li>Front-End - Angular JS 1.2.29 (2-way Data Binding, Promises, Services($location, $inteval,custom and etc.), Routing (ng-view)).</li> 
+<li>Styling - Bootstrap 3.3.6. </li>
 <li>API - GitHub API (api.github.com).</li>
-<li>Server - Node. </li>
-<li>Port - 1345. </li>
+<li>Server - node.js </li>
+<li>Port - whatever port you prefer, I'm running it on 1345. </li>
 <li>IDE - IntelliJ. </li>
 </ul>
 
