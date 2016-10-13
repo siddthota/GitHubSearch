@@ -13,7 +13,7 @@
         };
 
         var onSubs = function(userData) {
-            $scope.subs = userData;
+            $scope.repos = userData;
         };
 
         var onUserComplete = function(data) {
@@ -41,6 +41,12 @@
         $scope.gituser = $routeParams.gituser;
         $scope.sortOrder = '-stargazers_count';
         gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
+
+        $scope.activate = function() {
+            gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
+        };
+
+        //activate();
 
 
     }
