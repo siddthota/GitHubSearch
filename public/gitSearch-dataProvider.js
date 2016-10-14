@@ -20,15 +20,15 @@
                 })
         };
 
-        var getRepos = function(user) {
-            return $http.get(user.repos_url)
+        var getRepos = function(userData) {
+            return $http.get(userData.repos_url)
                 .then(function(response) {
                     return response.data;
                 });
         };
 
-        var getSubs = function(user) {
-            return $http.get(user.subscriptions_url)
+        var getSubs = function(userData) {
+            return $http.get(userData.subscriptions_url)
                 .then(function(response) {
                     return response.data
                 })
