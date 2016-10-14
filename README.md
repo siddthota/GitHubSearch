@@ -18,7 +18,7 @@ The application starts running on localhost:PORT
 
 <h3>Milestones Achieved </h3>
 <div>#1. Going to Build Tabbed Grids, that displays various data Objects in the Search Page. Each tab makes different service call and displays data in tabular grid.</div>
-<div>2. Handling the $scope.$watch logic to make sure I don't make duplicate and unnecessary calls.</div>
+<div>2. Handling the $scope.$watch method to make sure I don't make duplicate and unnecessary calls.</div>
 
 <br />
 
