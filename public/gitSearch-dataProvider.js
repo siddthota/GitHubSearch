@@ -3,35 +3,24 @@
 
     angular.module("GitHubSearch")
             .factory("gitHubDataService", gitHubDataService);
-
+        gitHubDataService.$inject =['$http'];
     function gitHubDataService($http) {
 
         var getUser = function(gituser) {
-            var userData;
             var userUrl = "https://api.github.com/users/" + gituser;
-            return $http.get(userUrl)
-                .then(function(response) {
-                    userData = response.data;
-                    return $http.get(userUrl + "/followers");
-                })
-                .then(function(response) {
-                    userData.followers = response.data;
-                    return userData;
-                })
+            return $http.get(userUrl);
+        };
+
+        var getFollowers = function(userData) {
+            return $http.get(userData.followers_url);
         };
 
         var getRepos = function(userData) {
-            return $http.get(userData.repos_url)
-                .then(function(response) {
-                    return response.data;
-                });
+            return $http.get(userData.repos_url);
         };
 
         var getSubs = function(userData) {
-            return $http.get(userData.subscriptions_url)
-                .then(function(response) {
-                    return response.data
-                })
+            return $http.get(userData.subscriptions_url);
         };
 
         var getCbtrs = function(gituser, gitrepo) {
@@ -54,7 +43,8 @@
         getUser: getUser,
         getRepos: getRepos,
         getCbtrs: getCbtrs,
-        getSubs: getSubs
+        getSubs: getSubs,
+        getFollowers: getFollowers
       }
     }
 

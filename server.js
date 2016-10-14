@@ -30,7 +30,7 @@ app.all('/users/*', function (req, res) {
     debugLog(req.method + " Request Received...");
     debugLog("URI: " + config.uri);
 
-    if (req.method === 'GET') {
+    if (req.method === 'POST') {
         debugLog('Request params: ');
         debugLog(req.body);
 
@@ -54,6 +54,5 @@ app.listen(port, function() {
 
 function debugLog(msg) {
         console.log(msg);
-
 }
 

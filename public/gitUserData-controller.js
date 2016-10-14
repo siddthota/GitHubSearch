@@ -7,46 +7,61 @@
     function UserCtrl($scope, gitHubDataService, $routeParams) {
 
         $scope.activeTab = 'on-Repos';
+        $scope.gituser = $routeParams.gituser;
+        $scope.sortOrder = '-stargazers_count';
 
-        var onRepos = function (userData) {
-            $scope.repos = userData;
+        var onRepos = function (response) {
+            $scope.repos = response.data;
         };
 
-        var onSubs = function(userData) {
-            $scope.repos = userData;
+        var onSubs = function(response) {
+            $scope.repos = response.data;
         };
 
-        var onUserComplete = function(data) {
-            $scope.user = data;
-            $scope.followers = data.followers;
+        $scope.getFollowerData = function() {
+            gitHubDataService.getFollowers($scope.user).then(function (response) {
+                $scope.followers = response.data;
+            gitHubDataService.getRepos($scope.user)
+                    .then(onRepos, onError);
+            }, onError);
+
+        };
+
+        var onUserComplete = function(response) {
+            $scope.user = response.data;
+
+            $scope.getFollowerData();
+
            /* gitHubDataService.getRepos($scope.user)
                 .then(onRepos, onError);*/
-            function tabInfo() {
-                if($scope.activeTab === 'on-Repos') {
-                    gitHubDataService.getRepos($scope.user)
-                        .then(onRepos, onError);
-                }
-                else if($scope.activeTab === 'on-Subs') {
-                    gitHubDataService.getSubs($scope.user)
-                        .then(onSubs, onError);
-                }
-            }
-            tabInfo();
+
         };
 
         var onError = function (reason) {
             $scope.error = "Couldn't fetch data of the user"
         };
 
-        $scope.gituser = $routeParams.gituser;
-        $scope.sortOrder = '-stargazers_count';
-        gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
-
-        $scope.activate = function() {
+        $scope.$watch('gituser', function(newval, oldval) {
             gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
+            console.log(newval, oldval);
+        });
+
+        $scope.activate = function(tab) {
+            $scope.activeTab = tab || $scope.activeTab;
+            //gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
+            if($scope.user) {
+                if ($scope.activeTab === 'on-Repos') {
+                    gitHubDataService.getRepos($scope.user)
+                        .then(onRepos, onError);
+                }
+                else if ($scope.activeTab === 'on-Subs') {
+                    gitHubDataService.getSubs($scope.user)
+                        .then(onSubs, onError);
+                }
+            }
         };
 
-        //activate();
+        $scope.activate();
 
 
     }
