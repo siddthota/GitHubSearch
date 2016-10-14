@@ -3,9 +3,10 @@ var express = require('express');
 var request = require('request');
 var clone = require('clone');
 var methodOverride = require('method-override');
+var exphbs = require('express-handlebars');
 var global_config = require('./config/general');
 var request_config = require('./config/request');
-var exphbs = require('express-handlebars');
+
 
 var app = express();
 var hbs = exphbs.create({
