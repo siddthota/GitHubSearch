@@ -3,24 +3,15 @@ var express = require('express');
 var request = require('request');
 var clone = require('clone');
 var methodOverride = require('method-override');
-var exphbs = require('express-handlebars');
 var global_config = require('./config/general');
 var request_config = require('./config/request');
 
-
 var app = express();
-var hbs = exphbs.create({
-    extname: '.hbs',
-    defaultLayout: 'main'
-});
-
-app.engine('.hbs', hbs.engine);
-app.set('view engine', '.hbs');
 
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-    res.render('index.hbs',{
+    res.render('index.html',{
         host: global_config.hostURL
     })
 });
