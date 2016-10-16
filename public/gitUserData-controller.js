@@ -32,9 +32,6 @@
 
             $scope.getFollowerData();
 
-           /* gitHubDataService.getRepos($scope.user)
-                .then(onRepos, onError);*/
-
         };
 
         var onError = function (reason) {
@@ -48,7 +45,6 @@
 
         $scope.activate = function(tab) {
             $scope.activeTab = tab || $scope.activeTab;
-            //gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
             if($scope.user) {
                 if ($scope.activeTab === 'on-Repos') {
                     gitHubDataService.getRepos($scope.user)
@@ -62,7 +58,6 @@
         };
 
         $scope.activate();
-
 
     }
 

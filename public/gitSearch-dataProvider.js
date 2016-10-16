@@ -36,9 +36,7 @@
                     repo.contributors = response.data;
                     return repo;
                 })
-
         };
-
         return{
         getUser: getUser,
         getRepos: getRepos,
@@ -47,5 +45,4 @@
         getFollowers: getFollowers
       }
     }
-
 }());
