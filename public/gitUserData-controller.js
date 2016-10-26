@@ -2,13 +2,26 @@
     'use strict';
 
     angular.module('GitHubSearch')
-        .controller("UserCtrl", ["$scope", "gitHubDataService", "$routeParams", UserCtrl]);
+        .controller("UserCtrl", ["$scope", "gitHubDataService", "$routeParams", UserCtrl])
+        .filter('PaginationFilter', PaginationFilter);
+
+    function PaginationFilter() {
+        return function(input, start) {
+            if(!input || !input.length) {
+                return ;
+            }
+            start = +start;
+            return input.slice(start);
+        }
+    }
 
     function UserCtrl($scope, gitHubDataService, $routeParams) {
 
         $scope.activeTab = 'on-Repos';
         $scope.gituser = $routeParams.gituser;
         $scope.sortOrder = '-stargazers_count';
+        $scope.currentPage = 1;
+        $scope.pagesize = 10;
 
         var onRepos = function (response) {
             $scope.repos = response.data;
@@ -40,7 +53,6 @@
 
         $scope.$watch('gituser', function(newval, oldval) {
             gitHubDataService.getUser($scope.gituser).then(onUserComplete, onError);
-            console.log(newval, oldval);
         });
 
         $scope.activate = function(tab) {
